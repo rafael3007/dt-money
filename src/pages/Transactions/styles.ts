@@ -41,3 +41,7 @@ export const PriceHighlight = styled.span<PriceHighlightProps>`
       ? props.theme["green-300"]
       : props.theme["red-300"]};
 `;
+
+export const FooterTransition = styled.footer`
+  padding: 1rem;
+`;

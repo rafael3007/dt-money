@@ -2,7 +2,7 @@ import Header from "../../components/Header";
 import Pagination from "../../components/Pagination";
 import Summary from "../../components/Summary";
 import SearchForm from "./components/SearchForm";
-import { PriceHighlight, TransactionsContainer, TransactionsTable } from "./styles";
+import { FooterTransition, PriceHighlight, TransactionsContainer, TransactionsTable } from "./styles";
 
 export default function Transactions() {
     return (
@@ -62,9 +62,10 @@ export default function Transactions() {
                 </TransactionsTable>
 
             </TransactionsContainer>
-            <footer>
+
+            <FooterTransition>
                 <Pagination pagesLength={3} />
-            </footer>
+            </FooterTransition>
         </div>
     )
 }
