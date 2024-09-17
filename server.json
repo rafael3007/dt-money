@@ -1,76 +1,76 @@
 {
-    "transactions": [
-        {
-            "id": 1,
-            "description": "Desenvolvimento de site",
-            "type": "income",
-            "category": "Venda",
-            "price": 14000,
-            "createdAt": "2024-02-15T00:00:00.000z"
-        },
-        {
-            "id": 2,
-            "description": "Salário da equipe",
-            "type": "outcome",
-            "category": "Venda",
-            "price": -8000,
-            "createdAt": "2024-02-15T00:00:00.000z"
-        },
-        {
-            "id": 3,
-            "description": "Aluguel de servidores",
-            "type": "outcome",
-            "category": "Venda",
-            "price": -2000,
-            "createdAt": "2024-02-13T00:00:00.000z"
-        },
-        {
-            "id": 4,
-            "description": "Alimentação",
-            "type": "outcome",
-            "category": "Saída",
-            "price": -100,
-            "createdAt": "2024-02-13T00:00:00.000z"
-        },
-        {
-            "id": 5,
-            "description": "Hora extra",
-            "type": "income",
-            "category": "Salário",
-            "price": -2000,
-            "createdAt": "2024-02-13T00:00:00.000z"
-        },
-        {
-            "id": 6,
-            "description": "Agiota",
-            "type": "outcome",
-            "category": "Pagamento",
-            "price": -2000,
-            "createdAt": "2024-02-13T00:00:00.000z"
-        },
-        {
-            "id": 7,
-            "description": "AWS - EC2",
-            "type": "outcome",
-            "category": "Mensalidade",
-            "price": -2000,
-            "createdAt": "2024-02-13T00:00:00.000z"
-        },
-        {
-            "id": 8,
-            "description": "PETR4",
-            "type": "income",
-            "category": "Ações",
-            "price": 3730,
-            "createdAt": "2024-02-13T00:00:00.000z"
-        }
-    ],
-    "usuer": [
-        {
-            "id": 1,
-            "name": "John Doe",
-            "email": "johndoe@example.com",
-            "password": "123456"
-        }
-    ]
+  "transactions": [
+    {
+      "id": "1",
+      "description": "Desenvolvimento de site",
+      "type": "income",
+      "category": "Venda",
+      "price": 14000,
+      "createdAt": "2024-02-15T00:00:00.000z"
+    },
+    {
+      "id": "2",
+      "description": "Salário da equipe",
+      "type": "outcome",
+      "category": "Venda",
+      "price": -8000,
+      "createdAt": "2024-02-15T00:00:00.000z"
+    },
+    {
+      "id": "3",
+      "description": "Aluguel de servidores",
+      "type": "outcome",
+      "category": "Venda",
+      "price": -2000,
+      "createdAt": "2024-02-13T00:00:00.000z"
+    },
+    {
+      "id": "4",
+      "description": "Alimentação",
+      "type": "outcome",
+      "category": "Saída",
+      "price": -100,
+      "createdAt": "2024-02-13T00:00:00.000z"
+    },
+    {
+      "id": "5",
+      "description": "Hora extra",
+      "type": "income",
+      "category": "Salário",
+      "price": -2000,
+      "createdAt": "2024-02-13T00:00:00.000z"
+    },
+    {
+      "id": "6",
+      "description": "Agiota",
+      "type": "outcome",
+      "category": "Pagamento",
+      "price": -2000,
+      "createdAt": "2024-02-13T00:00:00.000z"
+    },
+    {
+      "id": "7",
+      "description": "AWS - EC2",
+      "type": "outcome",
+      "category": "Mensalidade",
+      "price": -2000,
+      "createdAt": "2024-02-13T00:00:00.000z"
+    },
+    {
+      "id": "8",
+      "description": "PETR4",
+      "type": "income",
+      "category": "Ações",
+      "price": 3730,
+      "createdAt": "2024-02-13T00:00:00.000z"
+    },
+    {
+      "id": "9",
+      "description": "Testando transação",
+      "price": 9999,
+      "category": "Vendas",
+      "type": "outcome",
+      "createdAt": "2024-02-13T00:00:00.000z"
+    }
+  ]
 }

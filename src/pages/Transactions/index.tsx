@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "../../components/Header";
 import Pagination from "../../components/Pagination";
 import Summary from "../../components/Summary";
@@ -7,12 +7,15 @@ import { FooterTransition, PriceHighlight, TransactionsContainer, TransactionsTa
 import { TransactionsProps } from "../../@types/Transactions";
 import { TransactionContext } from "../../contexts/TransactionsContext";
 import { Spinner } from "@radix-ui/themes";
-import { dateFormatter, getFormattedCurrency } from "../../utils/formatValues";
+import { dateFormatter, priceFormatter } from "../../utils/formatValues";
+import { useContextSelector } from "use-context-selector";
 
 
 
 export default function Transactions() {
-    const { transactions, loading } = useContext(TransactionContext);
+    
+    const transactions = useContextSelector(TransactionContext, (context) => context.transactions);
+    const loading = useContextSelector(TransactionContext, (context) => context.loading);
 
     const [pageIndex, setPageIndex] = useState<number>(0);
 
@@ -52,14 +55,19 @@ export default function Transactions() {
                     <TransactionsTable>
                         <tbody>
                             {
-                                transactionsVisibility.map((transaction: TransactionsProps) => (
-                                    <tr key={transaction.id}>
-                                        <td width="50%">{transaction.description}</td>
-                                        <td ><PriceHighlight variant={transaction.type}>{getFormattedCurrency(transaction.price)}</PriceHighlight></td>
-                                        <td >{transaction.category}</td>
-                                        <td >{dateFormatter.format(new Date(transaction.createdAt))}</td>
-                                    </tr>
-                                ))
+                                transactionsVisibility.map((transaction: TransactionsProps) => {
+                                    console.log(transaction)
+                                    return (
+
+                                        <tr key={transaction.id}>
+                                            <td width="50%">{transaction.description}</td>
+                                            <td ><PriceHighlight variant={transaction.type}>{priceFormatter.format(transaction.price)}</PriceHighlight></td>
+                                            <td >{transaction.category}</td>
+                                            <td >{dateFormatter.format(new Date(transaction.createdAt))}</td>
+                                        </tr>
+
+                                    )
+                                })
 
                             }
                         </tbody>
