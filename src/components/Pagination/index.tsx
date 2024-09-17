@@ -12,7 +12,6 @@ export default function Pagination({ pagesLength, click, activePage }: Paginatio
 
     return (
         <PageButtonContainer>
-
             {
                 pageNumbers.map(i => <PageButton key={"button-" + i.toString()} onClick={() => click(i)} active={i === activePage}>{i + 1}</PageButton>)
             }

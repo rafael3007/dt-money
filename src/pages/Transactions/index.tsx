@@ -1,59 +1,41 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Header from "../../components/Header";
 import Pagination from "../../components/Pagination";
 import Summary from "../../components/Summary";
 import SearchForm from "./components/SearchForm";
 import { FooterTransition, PriceHighlight, TransactionsContainer, TransactionsTable } from "./styles";
+import { TransactionsProps } from "../../@types/Transactions";
+import { TransactionContext } from "../../contexts/TransactionsContext";
+import { Spinner } from "@radix-ui/themes";
+import { dateFormatter, getFormattedCurrency } from "../../utils/formatValues";
 
-interface TransactionsProps {
-    id: number,
-    description: string,
-    type: "outcome" | "income",
-    category: string,
-    price: number,
-    createdAt: string
-}
 
 
 export default function Transactions() {
-    const [transactions, setTransactions] = useState<Array<TransactionsProps>>([]);
-    const [transactionsVisibility, setTransactionsVisibility] = useState<Array<TransactionsProps>>([]);
+    const { transactions, loading } = useContext(TransactionContext);
 
     const [pageIndex, setPageIndex] = useState<number>(0);
+
+    const [transactionsVisibility, setTransactionsVisibility] = useState<Array<TransactionsProps>>([]);
+
     const INDEX_INIT = pageIndex * 5
     const INDEX_FINAL = INDEX_INIT + 5
+    const pagesLength = Math.ceil(transactions.length / 5)
 
-
-    async function loadTransaction() {
-        const response = await fetch("http://localhost:3000/transactions")
-
-        const data: Array<TransactionsProps> = await response.json()
-
-
-
-        const dataShow = data.slice(INDEX_INIT, INDEX_FINAL)
-
-        setTransactions(data)
-        setTransactionsVisibility(dataShow)
-    }
 
     function handleSetPageIndex(indexPage: number) {
         setPageIndex(indexPage)
     }
 
     useEffect(() => {
-
-        loadTransaction()
-
-    }, [])
+        const dataShow = transactions.slice(INDEX_INIT, INDEX_FINAL)
+        setTransactionsVisibility(dataShow)
+    }, [pageIndex])
 
     useEffect(() => {
-
         const dataShow = transactions.slice(INDEX_INIT, INDEX_FINAL)
-
         setTransactionsVisibility(dataShow)
-
-    }, [pageIndex])
+    }, [loading])
 
     return (
         <div>
@@ -64,26 +46,28 @@ export default function Transactions() {
 
                 <SearchForm />
 
-                <TransactionsTable>
-                    <tbody>
-                        {
-                            transactionsVisibility.map((transaction: TransactionsProps) => (
-                                <tr key={transaction.id}>
-                                    <td width="50%">{transaction.description}</td>
-                                    <td ><PriceHighlight variant={transaction.type}>{transaction.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</PriceHighlight></td>
-                                    <td >{transaction.type}</td>
-                                    <td >{new Date(transaction.createdAt).toLocaleDateString('pt-BR')}</td>
-                                </tr>
-                            ))
+                {loading ? (<Spinner size="3" />) : (
+                    <TransactionsTable>
+                        <tbody>
+                            {
+                                transactionsVisibility.map((transaction: TransactionsProps) => (
+                                    <tr key={transaction.id}>
+                                        <td width="50%">{transaction.description}</td>
+                                        <td ><PriceHighlight variant={transaction.type}>{getFormattedCurrency(transaction.price)}</PriceHighlight></td>
+                                        <td >{transaction.category}</td>
+                                        <td >{dateFormatter.format(new Date(transaction.createdAt))}</td>
+                                    </tr>
+                                ))
 
-                        }
-                    </tbody>
-                </TransactionsTable>
+                            }
+                        </tbody>
+                    </TransactionsTable>
+                )}
 
             </TransactionsContainer>
 
             <FooterTransition>
-                {transactions.length > 0 ? <Pagination activePage={pageIndex} click={handleSetPageIndex} pagesLength={Math.floor(transactions.length / 5 + 1)} /> : ''}
+                {transactions.length > 0 ? <Pagination activePage={pageIndex} click={handleSetPageIndex} pagesLength={pagesLength} /> : ''}
             </FooterTransition>
         </div>
     )

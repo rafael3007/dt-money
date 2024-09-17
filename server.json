@@ -13,7 +13,7 @@
             "description": "Salário da equipe",
             "type": "outcome",
             "category": "Venda",
-            "price": 8000,
+            "price": -8000,
             "createdAt": "2024-02-15T00:00:00.000z"
         },
         {
@@ -21,39 +21,47 @@
             "description": "Aluguel de servidores",
             "type": "outcome",
             "category": "Venda",
-            "price": 2000,
+            "price": -2000,
             "createdAt": "2024-02-13T00:00:00.000z"
         },
         {
             "id": 4,
-            "description": "Aluguel de servidores",
+            "description": "Alimentação",
             "type": "outcome",
-            "category": "Venda",
-            "price": 2000,
+            "category": "Saída",
+            "price": -100,
             "createdAt": "2024-02-13T00:00:00.000z"
         },
         {
             "id": 5,
-            "description": "Aluguel de servidores",
-            "type": "outcome",
-            "category": "Venda",
-            "price": 2000,
+            "description": "Hora extra",
+            "type": "income",
+            "category": "Salário",
+            "price": -2000,
             "createdAt": "2024-02-13T00:00:00.000z"
         },
         {
             "id": 6,
-            "description": "Aluguel de servidores",
+            "description": "Agiota",
             "type": "outcome",
-            "category": "Venda",
-            "price": 2000,
+            "category": "Pagamento",
+            "price": -2000,
             "createdAt": "2024-02-13T00:00:00.000z"
         },
         {
             "id": 7,
-            "description": "Aluguel de servidores",
+            "description": "AWS - EC2",
             "type": "outcome",
-            "category": "Venda",
-            "price": 2000,
+            "category": "Mensalidade",
+            "price": -2000,
+            "createdAt": "2024-02-13T00:00:00.000z"
+        },
+        {
+            "id": 8,
+            "description": "PETR4",
+            "type": "income",
+            "category": "Ações",
+            "price": 3730,
             "createdAt": "2024-02-13T00:00:00.000z"
         }
     ],

@@ -9,19 +9,18 @@ export const PageButtonContainer = styled.div`
 `;
 
 interface PageButtonProps {
-  active?: boolean;
+  active: boolean;
 }
 
 export const PageButton = styled.button<PageButtonProps>`
   border-radius: 6px;
-  cursor: ${(props) => (!props.active ? "pointer" : "not-allowed")};
+  cursor: ${(props) => (props.active ? "not-allowed" : "pointer")};
   color: ${(props) =>
     props.active ? props.theme.white : props.theme["green-500"]};
   background: ${(props) =>
     props.active ? props.theme["green-300"] : "transparent"};
-  border: ${(props) => props.theme["green-500"]};
+  border: 1px solid ${(props) => props.theme["green-500"]};
   padding: 1.25rem;
   text-align: center;
   display: flex;
-
 `;

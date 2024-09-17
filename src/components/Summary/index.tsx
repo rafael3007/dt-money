@@ -1,8 +1,12 @@
 import { ArrowCircleUp, ArrowCircleDown, CurrencyDollar } from "@phosphor-icons/react";
 import { SummaryCard, SummaryContainer } from "./styles";
-// import { ArrowCircleUp, ArrowCircleDown, CurrencyDollar } from "phosphor-icons";
+import { getFormattedCurrency } from "../../utils/formatValues";
+import { useSummary } from "../../hooks/useSummary";
 
 export default function Summary() {
+
+    const summary = useSummary()
+
     return (
         <SummaryContainer>
             <SummaryCard>
@@ -10,7 +14,7 @@ export default function Summary() {
                     <span>Entradas</span>
                     <ArrowCircleUp size={32} color="#00b37e" />
                 </header>
-                <strong>R$ 17.400,00</strong>
+                <strong>{getFormattedCurrency(summary.incomes)}</strong>
 
             </SummaryCard>
             <SummaryCard>
@@ -18,7 +22,7 @@ export default function Summary() {
                     <span>Saidas</span>
                     <ArrowCircleDown size={32} color="#f75a68" />
                 </header>
-                <strong>R$ 17.400,00</strong>
+                <strong>{getFormattedCurrency(summary.outcomes)}</strong>
 
             </SummaryCard>
             <SummaryCard variant="green">
@@ -26,7 +30,7 @@ export default function Summary() {
                     <span>Total</span>
                     <CurrencyDollar size={32} color="#FFF" />
                 </header>
-                <strong>R$ 17.400,00</strong>
+                <strong>{getFormattedCurrency(summary.total)}</strong>
 
             </SummaryCard>
         </SummaryContainer>
