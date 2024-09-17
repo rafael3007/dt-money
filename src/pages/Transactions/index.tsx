@@ -37,6 +37,8 @@ export default function Transactions() {
         setTransactionsVisibility(dataShow)
     }, [loading])
 
+
+
     return (
         <div>
             <Header />
