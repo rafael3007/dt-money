@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Header from "../../components/Header";
 import Pagination from "../../components/Pagination";
 import Summary from "../../components/Summary";
-import SearchForm from "./components/SearchForm";
+import { SearchForm } from "./components/SearchForm";
 import { FooterTransition, PriceHighlight, TransactionsContainer, TransactionsTable } from "./styles";
 import { TransactionsProps } from "../../@types/Transactions";
 import { TransactionContext } from "../../contexts/TransactionsContext";
@@ -13,7 +13,7 @@ import { useContextSelector } from "use-context-selector";
 
 
 export default function Transactions() {
-    
+
     const transactions = useContextSelector(TransactionContext, (context) => context.transactions);
     const loading = useContextSelector(TransactionContext, (context) => context.loading);
 

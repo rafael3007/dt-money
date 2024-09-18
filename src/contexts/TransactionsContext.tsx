@@ -62,13 +62,11 @@ export function TransactionProvider({ children }: TrasactionsProviderProps) {
         []
     )
 
-
-
     useEffect(() => {
         setLoading(true)
         fetchTransactions()
 
-    }, [])
+    }, [fetchTransactions])
 
 
     return (
